@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>要求定義書.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<link href="../css/markdown.css" rel="stylesheet"></link>
+<h1 id="%E8%A6%81%E6%B1%82%E5%AE%9A%E7%BE%A9%E6%9B%B8">要求定義書</h1>
+<ul>
+<li><a href="#%E8%A6%81%E6%B1%82%E5%AE%9A%E7%BE%A9%E6%9B%B8">要求定義書</a>
+<ul>
+<li><a href="#1-%E6%A6%82%E8%A6%81">1. 概要</a>
+<ul>
+<li><a href="#11-%E7%9B%AE%E7%9A%84">1.1. 目的</a></li>
+<li><a href="#12-%E8%83%8C%E6%99%AF">1.2. 背景</a></li>
+</ul>
+</li>
+<li><a href="#2-%E8%A6%81%E6%B1%82">2. 要求</a>
+<ul>
+<li><a href="#21-%E6%A5%AD%E5%8B%99%E8%A6%81%E6%B1%82">2.1. 業務要求</a></li>
+<li><a href="#22-%E7%8F%BE%E8%A1%8C%E3%81%AE%E6%A5%AD%E5%8B%99%E3%83%95%E3%83%AD%E3%83%BC">2.2. 現行の業務フロー</a>
+<ul>
+<li><a href="#todo%E3%81%AE%E7%99%BB%E9%8C%B2">Todoの登録</a></li>
+<li><a href="#todo%E3%81%AE%E7%B7%A8%E9%9B%86">Todoの編集</a></li>
+<li><a href="#todo%E3%81%AE%E5%89%8A%E9%99%A4">Todoの削除</a></li>
+</ul>
+</li>
+<li><a href="#23-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E5%8C%96%E5%BE%8C%E3%81%AE%E6%A5%AD%E5%8B%99%E3%83%95%E3%83%AD%E3%83%BC">2.3. システム化後の業務フロー</a>
+<ul>
+<li><a href="#todo%E3%81%AE%E7%99%BB%E9%8C%B2-1">Todoの登録</a></li>
+<li><a href="#todo%E3%81%AE%E7%B7%A8%E9%9B%86-1">Todoの編集</a></li>
+<li><a href="#todo%E3%81%AE%E5%89%8A%E9%99%A4-1">Todoの削除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E5%8F%82%E8%80%83">3. 参考</a>
+<ul>
+<li><a href="#31-%E7%94%A8%E8%AA%9E%E9%9B%86">3.1. 用語集</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="page-break-before:always"></div>
+<h2 id="1-%E6%A6%82%E8%A6%81">1. 概要</h2>
+<h3 id="11-%E7%9B%AE%E7%9A%84">1.1. 目的</h3>
+<!-- 本文書が何を目的としたシステム開発に対して作成されている文書なのかを明記する。 -->
+<p>Todo管理サービスを新規開発して、Todoタスクをシステムで管理できるようにする。</p>
+<h3 id="12-%E8%83%8C%E6%99%AF">1.2. 背景</h3>
+<!-- 本開発に至る背景を明記する。 -->
+<p>オフラインでTodoタスクを管理する場合、記録したTodoタスクの管理や他者への共有が煩雑である。<br>
+また、Todoタスクの編集や削除をより容易に実現するためにもシステム化を検討している。</p>
+<div style="page-break-before:always"></div>
+<h2 id="2-%E8%A6%81%E6%B1%82">2. 要求</h2>
+<h3 id="21-%E6%A5%AD%E5%8B%99%E8%A6%81%E6%B1%82">2.1. 業務要求</h3>
+<!-- 顧客から出てきた整理されていない曖昧なままの要望を記述する -->
+<ul>
+<li>システムでTodoタスクを管理したい</li>
+<li>Todoタスクを登録して一覧で見れるようにしたい</li>
+<li>登録したTodoタスクは編集や削除をできるようにしたい</li>
+</ul>
+<h3 id="22-%E7%8F%BE%E8%A1%8C%E3%81%AE%E6%A5%AD%E5%8B%99%E3%83%95%E3%83%AD%E3%83%BC">2.2. 現行の業務フロー</h3>
+<h4 id="todo%E3%81%AE%E7%99%BB%E9%8C%B2">Todoの登録</h4>
+<ol>
+<li>Todoタスクを紙にメモする</li>
+</ol>
+<h4 id="todo%E3%81%AE%E7%B7%A8%E9%9B%86">Todoの編集</h4>
+<ol>
+<li>紙のメモから対象のTodoタスクを探す</li>
+<li>対象のTodoタスクを消しゴムでメモから消す</li>
+<li>Todoタスクを新たに書き直す</li>
+</ol>
+<h4 id="todo%E3%81%AE%E5%89%8A%E9%99%A4">Todoの削除</h4>
+<ol>
+<li>紙のメモから対象のTodoタスクを探す</li>
+<li>対象のTodoタスクを消しゴムでメモから消す</li>
+</ol>
+<h3 id="23-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E5%8C%96%E5%BE%8C%E3%81%AE%E6%A5%AD%E5%8B%99%E3%83%95%E3%83%AD%E3%83%BC">2.3. システム化後の業務フロー</h3>
+<h4 id="todo%E3%81%AE%E7%99%BB%E9%8C%B2">Todoの登録</h4>
+<ol>
+<li>Todoタスクを入力する</li>
+<li>入力したTodoタスクを登録する</li>
+</ol>
+<h4 id="todo%E3%81%AE%E7%B7%A8%E9%9B%86">Todoの編集</h4>
+<ol>
+<li>Todoタスクの一覧を表示する</li>
+<li>一覧から編集したいTodoタスクを選択する</li>
+<li>対象のTodoタスクを編集する</li>
+<li>編集したTodoタスクを登録する</li>
+</ol>
+<h4 id="todo%E3%81%AE%E5%89%8A%E9%99%A4">Todoの削除</h4>
+<ol>
+<li>Todoタスクの一覧を表示する</li>
+<li>一覧から削除したいTodoタスクを選択する</li>
+<li>対象のTodoタスクを削除する</li>
+</ol>
+<div style="page-break-before:always"></div>
+<h2 id="3-%E5%8F%82%E8%80%83">3. 参考</h2>
+<h3 id="31-%E7%94%A8%E8%AA%9E%E9%9B%86">3.1. 用語集</h3>
+<!-- 文書内で使われている用語や社内用語、業界用語について記述する -->
+<ul>
+<li>Todoタスク：メモしたやることリストの各タスクを指す</li>
+</ul>
+
+</body>
+</html>
