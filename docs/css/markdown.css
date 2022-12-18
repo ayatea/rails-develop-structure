@@ -1,0 +1,55 @@
+/* タイトルスタイル */
+h1 {
+  background: #347a74;
+  box-shadow: 0px 0px 0px 5px #347a74;
+  border: solid 3px #347a74;
+  padding: 0.2em 0.5em;
+  color: white;
+}
+
+/* 大見出しスタイル */
+h2 {
+  position: relative;
+  padding: 0.4em 0.4em;
+  background: #598984;
+  color: white;
+}
+
+/* 中見出しスタイル */
+h3 {
+  background: linear-gradient(transparent 85%, #6b9696 70%);
+  color: #6b9696;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 0.25em 0.25em;
+}
+
+/* 小見出しスタイル */
+h4 {
+  position: relative;
+  color: #6b9696;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0.5em 0em;
+  padding: 0.25em 0.25em;
+  border-left: solid 5px #6b9696;
+}
+
+/* ボディスタイル */
+body {
+  background: #f4f4f4;
+  color: #347a74;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* テーブルスタイル */
+html body table th {
+  background-color: #7ebcb5;
+  color: rgb(255, 253, 253);
+}
+
+/* テーブルbodyの偶数行スタイル */
+html body table tr:nth-child(even) {
+  background-color: #eaf2ee;
+}
