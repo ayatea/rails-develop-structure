@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Tasks Features', type: :feature do
 
-  describe 'GET /index"' do
+  describe 'GET /tasks"' do
     context 'タスクコンテンツが1個も登録されていない時' do
 
       it 'テーブルに0個のコンテンツが表示される' do
